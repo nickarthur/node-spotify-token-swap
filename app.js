@@ -21,6 +21,10 @@ if (
     process.exit(1);
 }
 
+// NAN
+require('dotenv').config()
+// NAN
+
 var express = require('express');
 var url = require('url');
 var request = require('request');
@@ -70,10 +74,14 @@ app.post('/swap', function (req, res, next) {
         if (response.statusCode === 200) {
             body.refresh_token = encrpytion.encrypt(body.refresh_token);
         }
-        
+
         res.status(response.statusCode);
         res.json(body);
 
+        // BEGIN NAN DEBUG
+        console.log(`**** (/swap) response: \n ${JSON.stringify(res)}\n\n`)
+        console.log(`****(/swap) response Body: \n ${JSON.stringify(res.body)}\n\n`)
+        // END NAN DEBUG
         next();
     });
 });
@@ -114,6 +122,10 @@ app.post('/refresh', function (req, res, next) {
         res.status(response.statusCode);
         res.json(body);
 
+        // BEGIN NAN DEBUG
+        console.log(`**** (/refresh) response: \n ${JSON.stringify(res)}\n\n`)
+        console.log(`**** (/refresh) response Body: \n ${JSON.stringify(res.body)}\n\n`)
+        // END NAN DEBUG
         next();
     });
 });
