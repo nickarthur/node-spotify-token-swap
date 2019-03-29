@@ -6,6 +6,9 @@ if (!!process.env.NEW_RELIC_LICENSE_KEY) {
     require('newrelic');
 }
 
+// NAN
+require('dotenv').config()
+// NAN
 if (
     !process.env.CLIENT_ID ||
         !process.env.CLIENT_SECRET ||
@@ -21,9 +24,6 @@ if (
     process.exit(1);
 }
 
-// NAN
-require('dotenv').config()
-// NAN
 
 var express = require('express');
 var url = require('url');
